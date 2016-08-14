@@ -14,7 +14,7 @@ public class Conexion
 		try
 		{
 			Class.forName(driver).newInstance();
-			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","root","root");
+			conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/agenda","agenda","agenda");
 			System.out.println("Conexion exitosa");
 		}
 		catch(Exception e)

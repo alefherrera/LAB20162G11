@@ -166,6 +166,8 @@ public class VentanaPersona extends JFrame
 		txtAltura.setText(String.valueOf(persona.getAltura()));
 		txtPiso.setText(String.valueOf(persona.getPiso()));
 		txtDepto.setText(String.valueOf(persona.getDepto()));
+		
+		
 		cmbLocalidad.setSelectedItem(persona.getLocalidad());
 		cmbTipoContacto.setSelectedItem(persona.getTipoContacto());
 		

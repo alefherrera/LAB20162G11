@@ -17,13 +17,15 @@ import presentacion.vista.VentanaPersona;
 public class ControladorPersona implements ActionListener {
 
 	private PersonaDTO currentPerson;
+	private Controlador controlador;
 	private VentanaPersona ventanaPersona;
 	private Agenda agenda;
 
-	public ControladorPersona(VentanaPersona vista, Agenda agenda, PersonaDTO currentPerson) {
+	public ControladorPersona(VentanaPersona vista, Agenda agenda, PersonaDTO currentPerson, Controlador controlador) {
 		this.ventanaPersona = vista;
 		this.ventanaPersona.getBtnAgregarPersona().addActionListener(this);
 		this.currentPerson = currentPerson;
+		this.controlador = controlador;
 		this.agenda = agenda;
 		this.ventanaPersona.cargarFormulario(currentPerson);
 
@@ -86,6 +88,8 @@ public class ControladorPersona implements ActionListener {
 
 				this.agenda.actualizarPersona(personaEditar);
 			}
+			
+			controlador.llenarTabla();
 			this.ventanaPersona.dispose();
 		}
 	}

@@ -28,7 +28,7 @@ public class Controlador implements ActionListener {
 		this.llenarTabla();
 	}
 
-	private void llenarTabla() {
+	public void llenarTabla() {
 		this.vista.getModelPersonas().setRowCount(0); // Para vaciar la tabla
 		this.vista.getModelPersonas().setColumnCount(0);
 		this.vista.getModelPersonas().setColumnIdentifiers(this.vista.getNombreColumnas());
@@ -44,7 +44,7 @@ public class Controlador implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.vista.getBtnAgregar()) {
 			VentanaPersona ventanaPer = new VentanaPersona();
-			ControladorPersona ctrlPersona = new ControladorPersona(ventanaPer, agenda, null);
+			ControladorPersona ctrlPersona = new ControladorPersona(ventanaPer, agenda, null, this);
 		} else if (e.getSource() == this.vista.getBtnBorrar()) {
 			int[] filas_seleccionadas = this.vista.getTablaPersonas().getSelectedRows();
 			for (int fila : filas_seleccionadas) {
@@ -58,7 +58,7 @@ public class Controlador implements ActionListener {
 			PersonaDTO selectedPerson = this.personas_en_tabla.get(position);
 
 			VentanaPersona ventanaPer = new VentanaPersona();
-			ControladorPersona ctrlPersona = new ControladorPersona(ventanaPer, agenda, selectedPerson);
+			ControladorPersona ctrlPersona = new ControladorPersona(ventanaPer, agenda, selectedPerson, this);
 		} else if (e.getSource() == this.vista.getBtnReporte()) {
 			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
 			reporte.mostrar();

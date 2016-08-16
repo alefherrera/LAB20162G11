@@ -8,7 +8,6 @@ CREATE TABLE `personas`
   `email` varchar(40) NOT NULL,
   `fechaNac` datetime NOT NULL,
   `tipoContacto` int NOT NULL,
-  `domicilio` int NOT NULL,
   `calle` varchar(100) NOT NULL,
   `altura` int NOT NULL,
   `piso` int,

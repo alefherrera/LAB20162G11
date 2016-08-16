@@ -7,28 +7,32 @@ import persistencia.dao.PersonaDAO;
 import dto.PersonaDTO;
 
 
-public class Agenda 
+public class Agenda
 {
-	private PersonaDAO persona;	
-	
+	private PersonaDAO persona;
+
 	public Agenda()
 	{
 		persona = new PersonaDAO();
 	}
-	
+
 	public void agregarPersona(PersonaDTO nuevaPersona)
 	{
 		persona.insert(nuevaPersona);
 	}
 
-	public void borrarPersona(PersonaDTO persona_a_eliminar) 
+	public void borrarPersona(PersonaDTO persona_a_eliminar)
 	{
 		persona.delete(persona_a_eliminar);
 	}
-	
+
+	public void actualizarPersona(PersonaDTO persona_a_actualizar) {
+		persona.update(persona_a_actualizar);
+	}
+
 	public List<PersonaDTO> obtenerPersonas()
 	{
-		return persona.readAll();		
+		return persona.readAll();
 	}
-	
+
 }

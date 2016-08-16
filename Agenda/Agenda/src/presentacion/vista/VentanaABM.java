@@ -1,0 +1,66 @@
+package presentacion.vista;
+
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import presentacion.controlador.Controlador;
+import javax.swing.JComboBox;
+
+public class VentanaABM extends JFrame 
+{
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField txtNombre;
+	private JButton btnAgregarPersona;
+	private Controlador controlador;
+
+	public VentanaABM(Controlador controlador) 
+	{
+		super();
+		this.controlador = controlador;
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 634, 132);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 606, 74);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNombreYApellido = new JLabel("Descripcion");
+		lblNombreYApellido.setBounds(12, 32, 113, 14);
+		panel.add(lblNombreYApellido);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(137, 29, 367, 20);
+		panel.add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		btnAgregarPersona = new JButton("Agregar");
+		btnAgregarPersona.addActionListener(this.controlador);
+		btnAgregarPersona.setBounds(516, 11, 87, 57);
+		panel.add(btnAgregarPersona);
+		
+		this.setVisible(true);
+	}
+	
+	public JTextField getTxtNombre() 
+	{
+		return txtNombre;
+	}
+
+	public JButton getBtnAgregarPersona() 
+	{
+		return btnAgregarPersona;
+	}
+}
+

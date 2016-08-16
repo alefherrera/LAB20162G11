@@ -12,7 +12,7 @@ import dto.PersonaDTO;
 import dto.TipoContactoDTO;
 
 public class PersonaDAO {
-	private static final String insert = "INSERT INTO personas(idPersona, nombre, telefono, email, fechaNac, calle, altura, piso, depto, localidad, tipoContacto) VALUES(?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?)";
+	private static final String insert = "INSERT INTO personas(nombre, telefono, email, fechaNac, calle, altura, piso, depto, localidad, tipoContacto) VALUES(?, ?, ? ,?, ?, ?, ?, ?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE idPersona = ?";
 	private static final String update = "UPDATE personas SET nombre = ?, telefono = ?, email = ?, fechaNac = ?, calle = ?, altura = ?, piso = ?, depto = ?, localidad = ?, tipoContacto = ? WHERE idPersona = ?";
 	private static final String readall = "SELECT * FROM personas";
@@ -22,17 +22,17 @@ public class PersonaDAO {
 		PreparedStatement statement;
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(insert);
-			statement.setInt(1, persona.getIdPersona());
-			statement.setString(2, persona.getNombre());
-			statement.setString(3, persona.getTelefono());
-			statement.setString(4, persona.getEmail());
-			statement.setDate(5, persona.getFechaNac());
-			statement.setString(6, persona.getCalle());
-			statement.setInt(7, persona.getAltura());
-			statement.setInt(8, persona.getPiso());
-			statement.setInt(9, persona.getDepto());
-			statement.setInt(10, persona.getLocalidad().getId());
-			statement.setInt(11, persona.getTipoContacto().getId());
+			//statement.setInt(1, persona.getIdPersona());
+			statement.setString(1, persona.getNombre());
+			statement.setString(2, persona.getTelefono());
+			statement.setString(3, persona.getEmail());
+			statement.setDate(4, persona.getFechaNac());
+			statement.setString(5, persona.getCalle());
+			statement.setInt(6, persona.getAltura());
+			statement.setInt(7, persona.getPiso());
+			statement.setInt(8, persona.getDepto());
+			statement.setInt(9, persona.getLocalidad().getId());
+			statement.setInt(10, persona.getTipoContacto().getId());
 			if (statement.executeUpdate() > 0) // Si se ejecut� devuelvo true
 				return true;
 		} catch (SQLException e) {

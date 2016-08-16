@@ -18,10 +18,12 @@ CREATE TABLE `personas`
 CREATE TABLE `localidades`
 (
   `id` int AUTO_INCREMENT,
-  `descripcion` varchar(40) NOT NULL
+  `descripcion` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 CREATE TABLE `tiposContacto`
 (
   `id` int AUTO_INCREMENT,
-  `descripcion` varchar(40) NOT NULL
+  `descripcion` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
 );

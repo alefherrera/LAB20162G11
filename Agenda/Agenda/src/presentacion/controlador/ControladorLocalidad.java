@@ -16,12 +16,13 @@ public class ControladorLocalidad implements ActionListener {
 		// TODO Auto-generated constructor stub
 		this.vista = vista;
 		this.agenda = agenda;
+		vista.getBtnAgregar().addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == vista.getBtnAgregarPersona()) {
+		if (e.getSource() == vista.getBtnAgregar()) {
 			agenda.agregarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
 		}
 	}

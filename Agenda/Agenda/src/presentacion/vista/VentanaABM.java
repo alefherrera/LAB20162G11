@@ -16,13 +16,11 @@ public class VentanaABM extends JFrame
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JButton btnAgregarPersona;
-	private Controlador controlador;
+	private JButton btnAgregar;
 
-	public VentanaABM(Controlador controlador) 
+	public VentanaABM() 
 	{
 		super();
-		this.controlador = controlador;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 634, 132);
@@ -45,10 +43,9 @@ public class VentanaABM extends JFrame
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		btnAgregarPersona = new JButton("Agregar");
-		btnAgregarPersona.addActionListener(this.controlador);
-		btnAgregarPersona.setBounds(516, 11, 87, 57);
-		panel.add(btnAgregarPersona);
+		btnAgregar = new JButton("Agregar");
+		btnAgregar.setBounds(516, 11, 87, 57);
+		panel.add(btnAgregar);
 		
 		this.setVisible(true);
 	}
@@ -58,9 +55,9 @@ public class VentanaABM extends JFrame
 		return txtNombre;
 	}
 
-	public JButton getBtnAgregarPersona() 
+	public JButton getBtnAgregar() 
 	{
-		return btnAgregarPersona;
+		return btnAgregar;
 	}
 }
 

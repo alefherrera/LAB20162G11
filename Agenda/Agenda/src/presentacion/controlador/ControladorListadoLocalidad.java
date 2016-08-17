@@ -24,6 +24,7 @@ public class ControladorListadoLocalidad implements ActionListener {
 		this.vista.getBtnEditar().addActionListener(this);
 		this.agenda = agenda;
 		this.localidades = null;
+		inicializar();
 	}
 
 	public void inicializar() {

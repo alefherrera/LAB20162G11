@@ -22,6 +22,7 @@ public class ControladorListadoTipoContacto implements ActionListener {
 		this.vista.getBtnEditar().addActionListener(this);
 		this.agenda = agenda;
 		this.tiposContacto = null;
+		inicializar();
 	}
 
 	public void inicializar() {

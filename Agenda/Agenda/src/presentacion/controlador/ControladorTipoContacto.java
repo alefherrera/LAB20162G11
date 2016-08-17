@@ -10,12 +10,14 @@ import presentacion.vista.VentanaABM;
 public class ControladorTipoContacto implements ActionListener {
 
 	private VentanaABM vista;
+	private ControladorListadoTipoContacto controladorListado;
 	private Agenda agenda;
 
-	public ControladorTipoContacto(VentanaABM vista, Agenda agenda) {
+	public ControladorTipoContacto(VentanaABM vista, ControladorListadoTipoContacto controladorListado,  Agenda agenda) {
 		// TODO Auto-generated constructor stub
 		this.vista = vista;
 		this.agenda = agenda;
+		this.controladorListado = controladorListado;
 		vista.getBtnAgregar().addActionListener(this);
 	}
 
@@ -24,6 +26,7 @@ public class ControladorTipoContacto implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == vista.getBtnAgregar()) {
 			agenda.agregarTipoContacto(new TipoContactoDTO(0, vista.getTxtNombre().getText()));
+			controladorListado.llenarTabla();
 		}
 	}
 

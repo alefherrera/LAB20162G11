@@ -70,7 +70,8 @@ public class Controlador implements ActionListener {
 			new ControladorListadoLocalidad(ventanaListado, agenda);
 			
 		} else if (e.getSource() == this.vista.getBtnTiposContacto()) {
-			
+			VentanaListado ventanaListado = new VentanaListado();
+			new ControladorListadoTipoContacto(ventanaListado, agenda);
 			
 		}
 	}

@@ -18,6 +18,8 @@ public class Vista {
 	private DefaultTableModel modelPersonas;
 	private String[] nombreColumnas = { "Nombre y apellido", "Teléfono" };
 	private JButton btnEditar;
+	private JButton btnLocalidades;
+	private JButton btnTiposContacto;
 
 	public Vista() {
 		super();
@@ -26,12 +28,12 @@ public class Vista {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 452, 351);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 262);
+		panel.setBounds(0, 0, 434, 304);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -50,20 +52,28 @@ public class Vista {
 		spPersonas.setViewportView(tablaPersonas);
 
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(10, 228, 89, 23);
+		btnAgregar.setBounds(20, 206, 89, 23);
 		panel.add(btnAgregar);
 
 		btnEditar = new JButton("Editar");
-		btnEditar.setBounds(109, 228, 89, 23);
+		btnEditar.setBounds(119, 206, 89, 23);
 		panel.add(btnEditar);
 
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(208, 228, 89, 23);
+		btnBorrar.setBounds(218, 206, 89, 23);
 		panel.add(btnBorrar);
 
 		btnReporte = new JButton("Reporte");
-		btnReporte.setBounds(307, 228, 89, 23);
+		btnReporte.setBounds(317, 206, 89, 23);
 		panel.add(btnReporte);
+		
+		btnLocalidades = new JButton("Localidades");
+		btnLocalidades.setBounds(71, 252, 99, 39);
+		panel.add(btnLocalidades);
+		
+		btnTiposContacto = new JButton("Tipos contacto");
+		btnTiposContacto.setBounds(245, 252, 122, 39);
+		panel.add(btnTiposContacto);
 	}
 
 	public void show() {
@@ -86,6 +96,14 @@ public class Vista {
 		return btnReporte;
 	}
 
+	public JButton getBtnLocalidades() {
+		return btnLocalidades;
+	}
+	
+	public JButton getBtnTiposContacto() {
+		return btnTiposContacto;
+	}
+	
 	public DefaultTableModel getModelPersonas() {
 		return modelPersonas;
 	}

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
+import presentacion.vista.VentanaListado;
 import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
@@ -20,6 +21,8 @@ public class Controlador implements ActionListener {
 		this.vista.getBtnBorrar().addActionListener(this);
 		this.vista.getBtnEditar().addActionListener(this);
 		this.vista.getBtnReporte().addActionListener(this);
+		this.vista.getBtnLocalidades().addActionListener(this);
+		this.vista.getBtnTiposContacto().addActionListener(this);
 		this.agenda = agenda;
 		this.personas_en_tabla = null;
 	}
@@ -62,6 +65,13 @@ public class Controlador implements ActionListener {
 		} else if (e.getSource() == this.vista.getBtnReporte()) {
 			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
 			reporte.mostrar();
+		} else if (e.getSource() == this.vista.getBtnLocalidades()) {
+			VentanaListado ventanaListado = new VentanaListado();
+			new ControladorListadoLocalidad(ventanaListado, agenda);
+			
+		} else if (e.getSource() == this.vista.getBtnTiposContacto()) {
+			
+			
 		}
 	}
 

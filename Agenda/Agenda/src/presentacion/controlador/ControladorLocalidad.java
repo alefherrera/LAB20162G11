@@ -6,16 +6,19 @@ import java.awt.event.ActionListener;
 import dto.LocalidadDTO;
 import modelo.Agenda;
 import presentacion.vista.VentanaABM;
+import presentacion.vista.VentanaListado;
 
 public class ControladorLocalidad implements ActionListener {
 
 	private VentanaABM vista;
+	private ControladorListadoLocalidad controladorListado;
 	private Agenda agenda;
 
-	public ControladorLocalidad(VentanaABM vista, Agenda agenda) {
+	public ControladorLocalidad(VentanaABM vista, ControladorListadoLocalidad controladorListado, Agenda agenda) {
 		// TODO Auto-generated constructor stub
 		this.vista = vista;
 		this.agenda = agenda;
+		this.controladorListado = controladorListado;
 		vista.getBtnAgregar().addActionListener(this);
 	}
 
@@ -24,6 +27,7 @@ public class ControladorLocalidad implements ActionListener {
 		// TODO Auto-generated method stub
 		if (e.getSource() == vista.getBtnAgregar()) {
 			agenda.agregarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
+			controladorListado.llenarTabla();
 		}
 	}
 

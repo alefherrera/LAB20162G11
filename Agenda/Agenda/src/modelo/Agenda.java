@@ -23,6 +23,22 @@ public class Agenda
 		localidad = new LocalidadDAO();
 		tipoContacto = new TipoContactoDAO();
 	}
+	
+	public void agregarLocalidad(LocalidadDTO nuevaLocalidad) {
+		localidad.insert(nuevaLocalidad);
+	}
+	
+	public void eliminarLocalidad(LocalidadDTO localidad_a_eliminar) {
+		localidad.delete(localidad_a_eliminar);
+	}
+	
+	public void agregarTipoContacto(TipoContactoDTO nuevoTipoContacto){
+		tipoContacto.insert(nuevoTipoContacto);
+	}
+	
+	public void eliminarTipoContacto(TipoContactoDTO tipoContacto_a_eliminar){
+		tipoContacto.delete(tipoContacto_a_eliminar);
+	}
 
 	public void agregarPersona(PersonaDTO nuevaPersona)
 	{

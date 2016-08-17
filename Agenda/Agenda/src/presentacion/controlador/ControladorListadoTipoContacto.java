@@ -45,7 +45,7 @@ public class ControladorListadoTipoContacto implements ActionListener {
 		if (e.getSource() == this.vista.getBtnAgregar()) {
 			
 			VentanaABM ventanaPer = new VentanaABM();
-			new ControladorTipoContacto(ventanaPer, this, agenda);
+			new ControladorTipoContacto(ventanaPer, this, agenda, null);
 			
 		} else if (e.getSource() == this.vista.getBtnBorrar()) {
 			int[] filas_seleccionadas = this.vista.getTablaEntidad().getSelectedRows();
@@ -60,7 +60,7 @@ public class ControladorListadoTipoContacto implements ActionListener {
 			TipoContactoDTO selectedPerson = this.tiposContacto.get(position);
 			
 			VentanaABM ventanaPer = new VentanaABM();
-			new ControladorTipoContacto(ventanaPer, this, agenda);
+			new ControladorTipoContacto(ventanaPer, this, agenda, selectedPerson);
 		}
 	}
 

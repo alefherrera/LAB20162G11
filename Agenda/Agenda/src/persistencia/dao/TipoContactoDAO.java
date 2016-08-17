@@ -13,6 +13,7 @@ import persistencia.conexion.Conexion;
 public class TipoContactoDAO {
 	private static final String insert = "INSERT INTO tiposContacto VALUES (?, ?)";
 	private static final String delete = "DELETE FROM tiposContacto WHERE id = ?";
+	private static final String update = "UPDATE tiposContacto SET Descripcion = ? WHERE id = ?";
 	private static final String readall = "SELECT * FROM tiposContacto";
 	private static final String readById = "SELECT * FROM tiposContacto WHERE id = ?";
 	private static final Conexion conexion = Conexion.getConexion();
@@ -67,6 +68,23 @@ public class TipoContactoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally
+		{
+			conexion.cerrarConexion();
+		}
+		return false;
+	}
+	
+	public boolean update(TipoContactoDTO tipoContacto) {
+		PreparedStatement statement;
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(update);
+			statement.setString(1, tipoContacto.getDescripcion());
+			statement.setInt(2, tipoContacto.getId());
+			if (statement.executeUpdate() > 0) // Si se ejecut� devuelvo true
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally // Se ejecuta siempre
 		{
 			conexion.cerrarConexion();
 		}

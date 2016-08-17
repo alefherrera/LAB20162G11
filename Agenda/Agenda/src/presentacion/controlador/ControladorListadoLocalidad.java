@@ -47,7 +47,7 @@ public class ControladorListadoLocalidad implements ActionListener {
 		if (e.getSource() == this.vista.getBtnAgregar()) {
 			
 			VentanaABM ventanaPer = new VentanaABM();
-			new ControladorLocalidad(ventanaPer, this, agenda);
+			new ControladorLocalidad(ventanaPer, this, agenda, null);
 			
 		} else if (e.getSource() == this.vista.getBtnBorrar()) {
 			int[] filas_seleccionadas = this.vista.getTablaEntidad().getSelectedRows();
@@ -59,10 +59,10 @@ public class ControladorListadoLocalidad implements ActionListener {
 			
 		} else if (e.getSource() == this.vista.getBtnEditar()) {
 			int position = this.vista.getTablaEntidad().getSelectedRows()[0];
-			LocalidadDTO selectedPerson = this.localidades.get(position);
+			LocalidadDTO selectedLoc = this.localidades.get(position);
 			
 			VentanaABM ventanaPer = new VentanaABM();
-			new ControladorLocalidad(ventanaPer, this, agenda);
+			new ControladorLocalidad(ventanaPer, this, agenda, selectedLoc);
 		}
 	}
 

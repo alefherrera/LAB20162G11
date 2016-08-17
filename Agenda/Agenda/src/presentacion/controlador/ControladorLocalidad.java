@@ -13,12 +13,14 @@ public class ControladorLocalidad implements ActionListener {
 	private VentanaABM vista;
 	private ControladorListadoLocalidad controladorListado;
 	private Agenda agenda;
+	private LocalidadDTO currentLocalidad;
 
-	public ControladorLocalidad(VentanaABM vista, ControladorListadoLocalidad controladorListado, Agenda agenda) {
+	public ControladorLocalidad(VentanaABM vista, ControladorListadoLocalidad controladorListado, Agenda agenda, LocalidadDTO currentLocalidad) {
 		// TODO Auto-generated constructor stub
 		this.vista = vista;
 		this.agenda = agenda;
 		this.controladorListado = controladorListado;
+		this.currentLocalidad = currentLocalidad;
 		vista.getBtnAgregar().addActionListener(this);
 	}
 
@@ -26,8 +28,18 @@ public class ControladorLocalidad implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == vista.getBtnAgregar()) {
-			agenda.agregarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
+			
+			if (currentLocalidad == null) {
+				agenda.agregarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
+			}
+			else
+			{
+				currentLocalidad.setDescripcion(vista.getTxtNombre().getText());
+				agenda.actualizarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
+			}
+			
 			controladorListado.llenarTabla();
+
 		}
 	}
 

@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.LocalidadDTO;
+import dto.PersonaDTO;
 import persistencia.conexion.Conexion;
 
 public class LocalidadDAO {
 	private static final String insert = "INSERT INTO localidades VALUES (?, ?)";
 	private static final String delete = "DELETE FROM localidades WHERE id = ?";
+	private static final String update = "UPDATE localidades SET Descripcion = ? WHERE id = ?";
 	private static final String readall = "SELECT * FROM localidades";
 	private static final String readById = "SELECT * FROM localidades WHERE id = ?";
 	private static final Conexion conexion = Conexion.getConexion();
@@ -66,6 +68,23 @@ public class LocalidadDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally
+		{
+			conexion.cerrarConexion();
+		}
+		return false;
+	}
+
+	public boolean update(LocalidadDTO localidad) {
+		PreparedStatement statement;
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(update);
+			statement.setString(1, localidad.getDescripcion());
+			statement.setInt(2, localidad.getId());
+			if (statement.executeUpdate() > 0) // Si se ejecut� devuelvo true
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally // Se ejecuta siempre
 		{
 			conexion.cerrarConexion();
 		}

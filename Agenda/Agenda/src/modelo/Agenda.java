@@ -69,5 +69,14 @@ public class Agenda
 	{
 		return tipoContacto.readAll();
 	}
+
+	public void actualizarLocalidad(LocalidadDTO localidadDTO) {
+		localidad.update(localidadDTO);
+	}
+	
+	public void actualizarTipoContacto(TipoContactoDTO tipoContacto_a_modificar) {
+		tipoContacto.update(tipoContacto_a_modificar);
+	}
+	
 	
 }

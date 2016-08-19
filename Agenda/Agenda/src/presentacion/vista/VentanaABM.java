@@ -10,8 +10,9 @@ import javax.swing.border.EmptyBorder;
 
 import presentacion.controlador.Controlador;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 
-public class VentanaABM extends JFrame 
+public class VentanaABM extends JDialog 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -46,9 +47,9 @@ public class VentanaABM extends JFrame
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.setBounds(516, 11, 87, 57);
 		panel.add(btnAgregar);
-		
-		this.setVisible(true);
+		this.setModalityType(ModalityType.APPLICATION_MODAL);
 	}
+	
 	
 	public JTextField getTxtNombre() 
 	{

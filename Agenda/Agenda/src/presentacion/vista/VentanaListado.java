@@ -6,11 +6,15 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 
 public class VentanaListado {
-	private JFrame frame;
+	private JDialog frame;
 	private JTable tablaEntidad;
 	private JButton btnAgregar;
 	private JButton btnBorrar;
@@ -24,11 +28,10 @@ public class VentanaListado {
 	}
 
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JDialog();
 		frame.setBounds(100, 100, 452, 293);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 434, 239);
 		frame.getContentPane().add(panel);
@@ -56,8 +59,8 @@ public class VentanaListado {
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setBounds(218, 206, 89, 23);
 		panel.add(btnBorrar);
-
-		show();
+		frame.setModalityType(ModalityType.APPLICATION_MODAL);
+		//show();
 		
 	}
 

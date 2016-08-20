@@ -1,5 +1,6 @@
 package presentacion.reportes;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,34 +16,29 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import dto.PersonaDTO;
 
-public class ReporteAgenda
-{
+public class ReporteAgenda {
 	private JasperReport reporte;
 	private JasperViewer reporteViewer;
-	private JasperPrint	reporteLleno;
-	
-	//Recibe la lista de personas para armar el reporte
-    public ReporteAgenda(List<PersonaDTO> personas)
-    {
-    	//Hardcodeado
+	private JasperPrint reporteLleno;
+
+	// Recibe la lista de personas para armar el reporte
+	public ReporteAgenda(List<PersonaDTO> personas) {
+		// Hardcodeado
 		Map<String, Object> parametersMap = new HashMap<String, Object>();
-		parametersMap.put("Fecha", new SimpleDateFormat("dd/MM/yyyy").format(new Date()));		
-    	try		{
-    		
-			this.reporte = (JasperReport) JRLoader.loadObjectFromFile( "reportes\\ReporteAgenda.jasper" );
-			this.reporteLleno = JasperFillManager.fillReport(this.reporte, parametersMap, 
+		parametersMap.put("Fecha", new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+		try {
+			this.reporte = (JasperReport) JRLoader
+					.loadObjectFromFile("reportes" + File.separatorChar + "ReporteAgenda.jasper");
+			this.reporteLleno = JasperFillManager.fillReport(this.reporte, parametersMap,
 					new JRBeanCollectionDataSource(personas));
-		}
-		catch( JRException ex ) 
-		{
+		} catch (JRException ex) {
 			ex.printStackTrace();
 		}
-    }       
-    
-    public void mostrar()
-	{
-		this.reporteViewer = new JasperViewer(this.reporteLleno,false);
+	}
+
+	public void mostrar() {
+		this.reporteViewer = new JasperViewer(this.reporteLleno, false);
 		this.reporteViewer.setVisible(true);
 	}
-   
-}	
+
+}

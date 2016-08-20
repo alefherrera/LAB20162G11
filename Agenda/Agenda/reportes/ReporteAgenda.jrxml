@@ -64,7 +64,7 @@
 					<textElement textAlignment="Center">
 						<font size="14"/>
 					</textElement>
-					<text><![CDATA[TelÃ©fono]]></text>
+					<text><![CDATA[Teléfono]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -89,7 +89,7 @@
 			<textField>
 				<reportElement x="355" y="0" width="100" height="30" uuid="5ce007da-8e81-48b7-91fd-8e603c20d7ef"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["PÃ¡gina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="455" y="0" width="100" height="30" uuid="52b869cb-a151-48f6-ad3c-3147a8d111e8"/>

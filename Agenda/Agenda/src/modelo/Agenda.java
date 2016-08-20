@@ -8,6 +8,7 @@ import persistencia.dao.PersonaDAO;
 import persistencia.dao.TipoContactoDAO;
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
+import dto.PersonaDTO.AtributoPersona;
 import dto.TipoContactoDTO;
 
 
@@ -16,7 +17,11 @@ public class Agenda
 	private PersonaDAO persona;
 	private LocalidadDAO localidad;
 	private TipoContactoDAO tipoContacto;
-
+	
+	public static final String ORDEN_LOCALIDAD = "localidad";
+	public static final String ORDEN_TIPOCONTACTO = "tipoContacto";
+	
+	
 	public Agenda()
 	{
 		persona = new PersonaDAO();
@@ -59,6 +64,11 @@ public class Agenda
 		return persona.readAll();
 	}
 
+	public List<PersonaDTO> obtenerPersonasPorOrden(AtributoPersona atributo)
+	{
+		return persona.readAllOrdered(atributo);
+	}
+	
 	
 	public List<LocalidadDTO> obtenerLocalides()
 	{

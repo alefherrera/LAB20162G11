@@ -9,6 +9,7 @@ import java.util.List;
 import persistencia.conexion.Conexion;
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
+import dto.PersonaDTO.AtributoPersona;
 import dto.TipoContactoDTO;
 
 public class PersonaDAO {
@@ -33,11 +34,11 @@ public class PersonaDAO {
 			statement.setInt(8, persona.getDepto());
 			statement.setInt(9, persona.getLocalidad().getId());
 			statement.setInt(10, persona.getTipoContacto().getId());
-			if (statement.executeUpdate() > 0) // Si se ejecut� devuelvo true
+			if (statement.executeUpdate() > 0)
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally // Se ejecuta siempre
+		} finally
 		{
 			conexion.cerrarConexion();
 		}
@@ -59,11 +60,11 @@ public class PersonaDAO {
 			statement.setInt(9, persona.getLocalidad().getId());
 			statement.setInt(10, persona.getTipoContacto().getId());
 			statement.setInt(11, persona.getIdPersona());
-			if (statement.executeUpdate() > 0) // Si se ejecut� devuelvo true
+			if (statement.executeUpdate() > 0)
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally // Se ejecuta siempre
+		} finally
 		{
 			conexion.cerrarConexion();
 		}
@@ -77,11 +78,11 @@ public class PersonaDAO {
 			statement = conexion.getSQLConexion().prepareStatement(delete);
 			statement.setString(1, Integer.toString(persona_a_eliminar.getIdPersona()));
 			chequeoUpdate = statement.executeUpdate();
-			if (chequeoUpdate > 0) // Si se ejecut� devuelvo true
+			if (chequeoUpdate > 0)
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally // Se ejecuta siempre
+		} finally
 		{
 			conexion.cerrarConexion();
 		}
@@ -90,40 +91,63 @@ public class PersonaDAO {
 
 	public List<PersonaDTO> readAll()
 	{
+		return readInner(readall);
+	}
+
+	public List<PersonaDTO> readAllOrdered(AtributoPersona atributo) {
+		String query = readall;
+		
+		switch (atributo) {
+		case LOCALIDAD:
+			query = query + " ORDER BY localidad";
+			break;
+		case TIPOCONTACTO:
+			query = query + " ORDER BY tipoContacto";
+			break;
+		default:
+			break;
+		}
+		
+		return readInner(query);
+	}
+	
+	private List<PersonaDTO> readInner(String query)
+	{
 		PreparedStatement statement;
-		ResultSet resultSet; //Guarda el resultado de la query
+		ResultSet resultSet;
 		ArrayList<PersonaDTO> personas = new ArrayList<PersonaDTO>();
 		try
 		{
-			statement = conexion.getSQLConexion().prepareStatement(readall);
+			statement = conexion.getSQLConexion().prepareStatement(query);
 			resultSet = statement.executeQuery();
 
 			while(resultSet.next())
 			{
 				personas.add(
-						new PersonaDTO(
-								resultSet.getInt("idPersona"),
-								resultSet.getString("Nombre"),
-								resultSet.getString("Telefono"),
-								resultSet.getString("email"),
-								resultSet.getDate("fechaNac"),
-								resultSet.getString("calle"),
-								resultSet.getInt("altura"),
-								resultSet.getInt("piso"),
-								resultSet.getInt("depto"),
-								new LocalidadDAO().get(resultSet.getInt("localidad")),
-								new TipoContactoDAO().get(resultSet.getInt("tipoContacto"))
-								));
+					new PersonaDTO(
+					resultSet.getInt("idPersona"),
+					resultSet.getString("Nombre"),
+					resultSet.getString("Telefono"),
+					resultSet.getString("email"),
+					resultSet.getDate("fechaNac"),
+					resultSet.getString("calle"),
+					resultSet.getInt("altura"),
+					resultSet.getInt("piso"),
+					resultSet.getInt("depto"),
+					new LocalidadDAO().get(resultSet.getInt("localidad")),
+					new TipoContactoDAO().get(resultSet.getInt("tipoContacto"))
+					));
 			}
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
-		finally //Se ejecuta siempre
+		finally
 		{
 			conexion.cerrarConexion();
 		}
 		return personas;
 	}
+	
 }

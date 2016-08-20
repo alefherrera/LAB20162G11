@@ -147,4 +147,11 @@ public class PersonaDTO
 	}
 	
 	
+	public enum AtributoPersona
+	{
+		LOCALIDAD,
+		TIPOCONTACTO
+	}
+	
+	
 }

@@ -142,5 +142,9 @@ public class PersonaDTO
 		this.tipoContacto = tipoContacto;
 	}
 	
+	public String getLocalidadDescripcion(){
+		return this.localidad.getDescripcion();
+	}
+	
 	
 }

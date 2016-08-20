@@ -27,10 +27,9 @@ public class ControladorPersona implements ActionListener {
 		this.currentPerson = currentPerson;
 		this.controlador = controlador;
 		this.agenda = agenda;
-		this.ventanaPersona.cargarFormulario(currentPerson);
-
+		
 		cargarCombos();
-
+		this.ventanaPersona.cargarFormulario(currentPerson);
 	}
 
 	private void cargarCombos() {

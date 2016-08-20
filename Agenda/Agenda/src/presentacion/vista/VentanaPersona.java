@@ -168,6 +168,8 @@ public class VentanaPersona extends JFrame
 		txtDepto.setText(String.valueOf(persona.getDepto()));
 		
 		
+		
+		
 		cmbLocalidad.setSelectedItem(persona.getLocalidad());
 		cmbTipoContacto.setSelectedItem(persona.getTipoContacto());
 		

@@ -64,7 +64,7 @@ public class Controlador implements ActionListener {
 			VentanaPersona ventanaPer = new VentanaPersona();
 			ControladorPersona ctrlPersona = new ControladorPersona(ventanaPer, agenda, selectedPerson, this);
 		} else if (e.getSource() == this.vista.getBtnReporte()) {
-			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonasPorOrden(AtributoPersona.LOCALIDAD));
+			ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonasPorOrden(AtributoPersona.LOCALIDAD), agenda.reporte_PersonasXLocalidad());
 			reporte.mostrar();
 		} else if (e.getSource() == this.vista.getBtnLocalidades()) {
 			VentanaListado ventanaListado = new VentanaListado();

@@ -5,10 +5,12 @@ import java.util.List;
 
 import persistencia.dao.LocalidadDAO;
 import persistencia.dao.PersonaDAO;
+import persistencia.dao.ReporteDAO;
 import persistencia.dao.TipoContactoDAO;
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
 import dto.PersonaDTO.AtributoPersona;
+import dto.PersonasPorLocalidadDTO;
 import dto.TipoContactoDTO;
 
 
@@ -17,6 +19,7 @@ public class Agenda
 	private PersonaDAO persona;
 	private LocalidadDAO localidad;
 	private TipoContactoDAO tipoContacto;
+	private ReporteDAO reporte;
 	
 	public static final String ORDEN_LOCALIDAD = "localidad";
 	public static final String ORDEN_TIPOCONTACTO = "tipoContacto";
@@ -27,6 +30,7 @@ public class Agenda
 		persona = new PersonaDAO();
 		localidad = new LocalidadDAO();
 		tipoContacto = new TipoContactoDAO();
+		reporte = new ReporteDAO();
 	}
 	
 	public void agregarLocalidad(LocalidadDTO nuevaLocalidad) {
@@ -88,5 +92,9 @@ public class Agenda
 		tipoContacto.update(tipoContacto_a_modificar);
 	}
 	
+	public List<PersonasPorLocalidadDTO> reporte_PersonasXLocalidad()
+	{
+		return reporte.reportePersonasPorLocalidad();
+	}
 	
 }

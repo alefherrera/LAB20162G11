@@ -49,8 +49,23 @@ public class ControladorPersona implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.ventanaPersona.getBtnAgregarPersona()) {
-			// es una persona nueva
-
+			
+			if (ventanaPersona.getTxtNombre().getText().isEmpty()) {
+				JOptionPane.showMessageDialog(ventanaPersona, 
+						"Por favor, ingrese un nombre al contacto nuevo.", 
+						"Error en un campo", 1);
+				return;
+			}
+			
+			if (!isNumeric(ventanaPersona.getTxtAltura().getText())
+				|| !isNumeric(ventanaPersona.getTxtDepto().getText())
+				|| !isNumeric(ventanaPersona.getTxtPiso().getText())) {
+				JOptionPane.showMessageDialog(ventanaPersona, 
+						"Por favor, ingrese valores numericos en los campos Altura, Piso, Depto.", 
+						"Error en un campo", 1);
+				return;
+			}
+			
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date parsed;
 			java.sql.Date birthdayDate = null;
@@ -63,7 +78,6 @@ public class ControladorPersona implements ActionListener {
 						"Error en un campo", 1);
 				return;
 			}
-			
 			
 			
 			if (getCurrentPerson() == null) {
@@ -105,5 +119,16 @@ public class ControladorPersona implements ActionListener {
 	public void setCurrentPerson(PersonaDTO currentPerson) {
 		this.currentPerson = currentPerson;
 	}
-
+	
+	private boolean isNumeric(String value)
+	{
+		try {
+			Integer.parseInt(value);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+		
+	}
+	
 }

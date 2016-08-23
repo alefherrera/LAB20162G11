@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
@@ -57,10 +58,14 @@ public class ControladorPersona implements ActionListener {
 				parsed = format.parse(ventanaPersona.getTxtFechaNac().getText());
 				birthdayDate = new java.sql.Date(parsed.getTime());
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(ventanaPersona, 
+						"Por favor, ingrese una fecha valida. Formato esperado dd/mm/yyyy", 
+						"Error en un campo", 1);
+				return;
 			}
-
+			
+			
+			
 			if (getCurrentPerson() == null) {
 				PersonaDTO nuevaPersona = new PersonaDTO(0, ventanaPersona.getTxtNombre().getText(),
 						ventanaPersona.getTxtTelefono().getText(), ventanaPersona.getTxtEmail().getText(), birthdayDate,

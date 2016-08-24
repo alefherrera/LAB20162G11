@@ -56,7 +56,7 @@ public class TipoContactoDAO {
 		return false;
 	}
 
-	public boolean delete(TipoContactoDTO tipoContacto) {
+	public boolean delete(TipoContactoDTO tipoContacto) throws SQLException {
 		PreparedStatement statement;
 		int chequeoUpdate = 0;
 		try {
@@ -67,6 +67,7 @@ public class TipoContactoDAO {
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw e;
 		} finally
 		{
 			conexion.cerrarConexion();

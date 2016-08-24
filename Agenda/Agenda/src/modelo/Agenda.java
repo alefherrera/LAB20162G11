@@ -1,6 +1,7 @@
 package modelo;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 import persistencia.dao.LocalidadDAO;
@@ -37,7 +38,7 @@ public class Agenda
 		localidad.insert(nuevaLocalidad);
 	}
 	
-	public void eliminarLocalidad(LocalidadDTO localidad_a_eliminar) {
+	public void eliminarLocalidad(LocalidadDTO localidad_a_eliminar) throws SQLException {
 		localidad.delete(localidad_a_eliminar);
 	}
 	
@@ -45,7 +46,7 @@ public class Agenda
 		tipoContacto.insert(nuevoTipoContacto);
 	}
 	
-	public void eliminarTipoContacto(TipoContactoDTO tipoContacto_a_eliminar){
+	public void eliminarTipoContacto(TipoContactoDTO tipoContacto_a_eliminar) throws SQLException{
 		tipoContacto.delete(tipoContacto_a_eliminar);
 	}
 

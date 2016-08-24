@@ -22,8 +22,10 @@ public class ControladorLocalidad implements ActionListener {
 		this.agenda = agenda;
 		this.controladorListado = controladorListado;
 		this.currentLocalidad = currentLocalidad;
-		if (currentLocalidad != null)
+		if (currentLocalidad != null){
 			this.vista.getTxtNombre().setText(currentLocalidad.getDescripcion());
+			this.vista.getBtnAgregar().setText("Editar");
+		}
 		vista.getBtnAgregar().addActionListener(this);
 		vista.show();
 	}

@@ -66,7 +66,6 @@ public class LocalidadDAO {
 			if (chequeoUpdate > 0)
 				return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw e;
 		} finally
 		{

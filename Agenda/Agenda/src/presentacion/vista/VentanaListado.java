@@ -14,7 +14,7 @@ import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 
 public class VentanaListado {
-	private JDialog frame;
+	public JDialog frame;
 	private JTable tablaEntidad;
 	private JButton btnAgregar;
 	private JButton btnBorrar;

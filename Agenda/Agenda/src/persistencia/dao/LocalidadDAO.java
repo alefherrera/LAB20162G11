@@ -56,7 +56,7 @@ public class LocalidadDAO {
 		return false;
 	}
 
-	public boolean delete(LocalidadDTO localidad) {
+	public boolean delete(LocalidadDTO localidad) throws SQLException {
 		PreparedStatement statement;
 		int chequeoUpdate = 0;
 		try {
@@ -67,6 +67,7 @@ public class LocalidadDAO {
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw e;
 		} finally
 		{
 			conexion.cerrarConexion();

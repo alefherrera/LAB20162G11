@@ -39,7 +39,7 @@ public class ControladorLocalidad implements ActionListener {
 				agenda.agregarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
 			} else {
 				currentLocalidad.setDescripcion(vista.getTxtNombre().getText());
-				agenda.actualizarLocalidad(new LocalidadDTO(0, vista.getTxtNombre().getText()));
+				agenda.actualizarLocalidad(currentLocalidad);
 			}
 
 			controladorListado.llenarTabla();

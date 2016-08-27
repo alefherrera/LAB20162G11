@@ -42,9 +42,33 @@ public class ControladorConfiguracion implements ActionListener {
 		return config;
 	}
 
+	private void validateInput() throws Exception {
+		String ipregex = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+		if (!vista.getTxtIp().getText().matches(ipregex) && !vista.getTxtIp().getText().toLowerCase().equals("localhost")) {
+			throw new Exception("Direccion IP invalida.");
+		}
+		
+		try {
+			Integer portNumber = Integer.parseInt(vista.getTxtPort().getText());
+			if (portNumber < 0 || portNumber > 65535) {
+				throw new Exception("Numero de puerto invalido.");
+			}
+		} catch (NumberFormatException e) {
+			throw new Exception("Numero de puerto invalido.");
+		}
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == vista.getBotonOK()) {
+
+			try {
+				validateInput();
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(vista, e1.getMessage(), "Error en la validacion", 1);
+				return;
+			}
+
 			if (TestConnection(createConfigFromInput())) {
 				SaveConfiguration();
 				controladorPrincipal.llenarTabla();

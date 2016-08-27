@@ -106,7 +106,8 @@ SetShellVarContext all
     delete $INSTDIR\jre.exe
     delete $INSTDIR\scriptAgenda.sql
     delete $INSTDIR\initdb.bat
-
+    delete $INSTDIR\ReporteAgenda.jasper
+    
 ;Borramos el desinstalador
   delete $INSTDIR\Uninstall.exe
 

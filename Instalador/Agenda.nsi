@@ -137,6 +137,7 @@ DetailPrint "Comenzando la instalacion de MySql"
 
 DetailPrint "Creando estructuras de datos"
     File "scriptAgenda.sql"
+    File "ReporteAgenda.jasper"
 
 DetailPrint "Configurando la base de datos"
     File "initdb.bat"

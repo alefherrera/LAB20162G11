@@ -80,3 +80,28 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `agenda`.`localidades`
+(`descripcion`)
+VALUES
+('Malvinas Argentinas');
+
+INSERT INTO `agenda`.`localidades`
+(`descripcion`)
+VALUES
+('Polvorines');
+
+INSERT INTO `agenda`.`localidades`
+(`descripcion`)
+VALUES
+('San Miguel');
+
+INSERT INTO `agenda`.`tiposcontacto`
+(`descripcion`)
+VALUES
+('Personal');
+
+INSERT INTO `agenda`.`tiposcontacto`
+(`descripcion`)
+VALUES
+('Trabajo');

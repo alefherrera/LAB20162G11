@@ -4,15 +4,17 @@ package modelo;
 import java.sql.SQLException;
 import java.util.List;
 
-import persistencia.dao.LocalidadDAO;
-import persistencia.dao.PersonaDAO;
-import persistencia.dao.ReporteDAO;
-import persistencia.dao.TipoContactoDAO;
 import dto.LocalidadDTO;
 import dto.PersonaDTO;
 import dto.PersonaDTO.AtributoPersona;
 import dto.PersonasPorLocalidadDTO;
 import dto.TipoContactoDTO;
+import persistencia.dao.LocalidadDAO;
+import persistencia.dao.PersonaDAO;
+import persistencia.dao.ReporteDAO;
+import persistencia.dao.TipoContactoDAO;
+import util.Configuration;
+import util.DatabaseUtil;
 
 
 public class Agenda
@@ -32,6 +34,11 @@ public class Agenda
 		localidad = new LocalidadDAO();
 		tipoContacto = new TipoContactoDAO();
 		reporte = new ReporteDAO();
+	}
+	
+	public boolean testConnection(Configuration config)
+	{
+		return DatabaseUtil.testConnection(config);
 	}
 	
 	public void agregarLocalidad(LocalidadDTO nuevaLocalidad) {

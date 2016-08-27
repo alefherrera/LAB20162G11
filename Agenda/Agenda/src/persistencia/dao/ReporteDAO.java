@@ -10,10 +10,9 @@ import dto.PersonaDTO;
 import dto.PersonasPorLocalidadDTO;
 import persistencia.conexion.Conexion;
 
-public class ReporteDAO {
+public class ReporteDAO extends BaseDAO {
 	
 	private static final String QUERY_PERSONAS_X_LOCALIDAD = "SELECT COUNT(*) as cantidad, l.descripcion as localidad FROM personas INNER JOIN localidades as l on personas.localidad = l.id GROUP BY localidad";
-	private static final Conexion conexion = Conexion.getConexion();
 	
 	public List<PersonasPorLocalidadDTO> reportePersonasPorLocalidad()
 	{
@@ -22,7 +21,7 @@ public class ReporteDAO {
 		ArrayList<PersonasPorLocalidadDTO> personas = new ArrayList<PersonasPorLocalidadDTO>();
 		try
 		{
-			statement = conexion.getSQLConexion().prepareStatement(QUERY_PERSONAS_X_LOCALIDAD);
+			statement = getConexion().getSQLConexion().prepareStatement(QUERY_PERSONAS_X_LOCALIDAD);
 			resultSet = statement.executeQuery();
 
 			while(resultSet.next())
@@ -40,7 +39,7 @@ public class ReporteDAO {
 		}
 		finally
 		{
-			conexion.cerrarConexion();
+			getConexion().cerrarConexion();
 		}
 		return personas;
 	}

@@ -67,11 +67,11 @@ public class Vista {
 		btnReporte = new JButton("Reporte");
 		btnReporte.setBounds(453, 206, 95, 33);
 		panel.add(btnReporte);
-		
+
 		btnLocalidades = new JButton("Localidades");
 		btnLocalidades.setBounds(312, 313, 127, 39);
 		panel.add(btnLocalidades);
-		
+
 		btnTiposContacto = new JButton("Tipos contacto");
 		btnTiposContacto.setBounds(453, 313, 127, 39);
 		panel.add(btnTiposContacto);
@@ -81,6 +81,10 @@ public class Vista {
 		this.frame.setVisible(true);
 	}
 
+	public void close() {
+		this.frame.dispose();
+	}
+
 	public JButton getBtnAgregar() {
 		return btnAgregar;
 	}
@@ -88,7 +92,7 @@ public class Vista {
 	public JButton getBtnBorrar() {
 		return btnBorrar;
 	}
-	
+
 	public JButton getBtnEditar() {
 		return btnEditar;
 	}
@@ -100,11 +104,11 @@ public class Vista {
 	public JButton getBtnLocalidades() {
 		return btnLocalidades;
 	}
-	
+
 	public JButton getBtnTiposContacto() {
 		return btnTiposContacto;
 	}
-	
+
 	public DefaultTableModel getModelPersonas() {
 		return modelPersonas;
 	}

@@ -5,9 +5,12 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
+import presentacion.vista.VentanaConfiguracion;
 import presentacion.vista.VentanaListado;
 import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
+import util.ConfigService;
+import util.DatabaseUtil;
 import dto.PersonaDTO;
 import dto.PersonaDTO.AtributoPersona;
 
@@ -29,7 +32,14 @@ public class Controlador implements ActionListener {
 	}
 
 	public void inicializar() {
-		this.llenarTabla();
+		
+		if (DatabaseUtil.testConnection(ConfigService.GetConfiguration())) {
+			this.llenarTabla();
+		}else
+		{
+			VentanaConfiguracion configWindow = new VentanaConfiguracion();
+			ControladorConfiguracion configController = new ControladorConfiguracion(configWindow, this);
+		}
 	}
 
 	public void llenarTabla() {
@@ -48,6 +58,12 @@ public class Controlador implements ActionListener {
 			this.vista.getModelPersonas().addRow(fila);
 		}
 		this.vista.show();
+	}
+	
+	public void finishApplication()
+	{
+		this.vista.close();
+		System.exit(0);
 	}
 
 	public void actionPerformed(ActionEvent e) {

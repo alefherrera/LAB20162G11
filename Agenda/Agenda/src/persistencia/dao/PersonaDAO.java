@@ -6,23 +6,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import persistencia.conexion.Conexion;
-import dto.LocalidadDTO;
 import dto.PersonaDTO;
 import dto.PersonaDTO.AtributoPersona;
-import dto.TipoContactoDTO;
+import persistencia.conexion.Conexion;
 
-public class PersonaDAO {
+public class PersonaDAO extends BaseDAO{
 	private static final String insert = "INSERT INTO personas(nombre, telefono, email, fechaNac, calle, altura, piso, depto, localidad, tipoContacto) VALUES(?, ?, ? ,?, ?, ?, ?, ?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE idPersona = ?";
 	private static final String update = "UPDATE personas SET nombre = ?, telefono = ?, email = ?, fechaNac = ?, calle = ?, altura = ?, piso = ?, depto = ?, localidad = ?, tipoContacto = ? WHERE idPersona = ?";
 	private static final String readall = "SELECT * FROM personas";
-	private static final Conexion conexion = Conexion.getConexion();
 
 	public boolean insert(PersonaDTO persona) {
 		PreparedStatement statement;
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(insert);
+			statement = getConexion().getSQLConexion().prepareStatement(insert);
 			//statement.setInt(1, persona.getIdPersona());
 			statement.setString(1, persona.getNombre());
 			statement.setString(2, persona.getTelefono());
@@ -40,7 +37,7 @@ public class PersonaDAO {
 			e.printStackTrace();
 		} finally
 		{
-			conexion.cerrarConexion();
+			getConexion().cerrarConexion();
 		}
 		return false;
 	}
@@ -48,7 +45,7 @@ public class PersonaDAO {
 	public boolean update(PersonaDTO persona) {
 		PreparedStatement statement;
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(update);
+			statement = getConexion().getSQLConexion().prepareStatement(update);
 			statement.setString(1, persona.getNombre());
 			statement.setString(2, persona.getTelefono());
 			statement.setString(3, persona.getEmail());
@@ -66,7 +63,7 @@ public class PersonaDAO {
 			e.printStackTrace();
 		} finally
 		{
-			conexion.cerrarConexion();
+			getConexion().cerrarConexion();
 		}
 		return false;
 	}
@@ -75,7 +72,7 @@ public class PersonaDAO {
 		PreparedStatement statement;
 		int chequeoUpdate = 0;
 		try {
-			statement = conexion.getSQLConexion().prepareStatement(delete);
+			statement = getConexion().getSQLConexion().prepareStatement(delete);
 			statement.setString(1, Integer.toString(persona_a_eliminar.getIdPersona()));
 			chequeoUpdate = statement.executeUpdate();
 			if (chequeoUpdate > 0)
@@ -84,7 +81,7 @@ public class PersonaDAO {
 			e.printStackTrace();
 		} finally
 		{
-			conexion.cerrarConexion();
+			getConexion().cerrarConexion();
 		}
 		return false;
 	}
@@ -118,7 +115,7 @@ public class PersonaDAO {
 		ArrayList<PersonaDTO> personas = new ArrayList<PersonaDTO>();
 		try
 		{
-			statement = conexion.getSQLConexion().prepareStatement(query);
+			statement = getConexion().getSQLConexion().prepareStatement(query);
 			resultSet = statement.executeQuery();
 
 			while(resultSet.next())
@@ -145,7 +142,7 @@ public class PersonaDAO {
 		}
 		finally
 		{
-			conexion.cerrarConexion();
+			getConexion().cerrarConexion();
 		}
 		return personas;
 	}
